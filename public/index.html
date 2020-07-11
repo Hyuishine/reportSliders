@@ -2,7 +2,7 @@
  * @Author: 黄宇/hyuishine
  * @Date: 2020-07-11 09:46:13
  * @LastEditors: 黄宇/hyuishine
- * @LastEditTime: 2020-07-11 22:16:30
+ * @LastEditTime: 2020-07-12 00:21:25
  * @Description: 
  * @Email: hyuishine@gmail.com
  * @Company: 3xData
@@ -46,7 +46,7 @@
       width: 100vw;
       height: 100vh;
     }
-
+    /* 动态颜色渐变 分阶段 */
     #color-stop-1 {
       -webkit-animation: change-color-1 12s ease-in-out infinite alternate;
       animation: change-color-1 12s ease-in-out infinite alternate
@@ -135,7 +135,8 @@
   </svg>
   <div id="app"></div>
   <!-- built files will be auto injected -->
-  <script src='https://unpkg.com/trianglify@^4/dist/trianglify.bundle.js'></script>
+  <!-- 引入trianglify 直接在body创建多三角背景图 -->
+  <script src='./trianglify.bundle.js'></script>
   <script>
     // set up the base pattern
     const pattern = trianglify({
@@ -144,11 +145,13 @@
       xColors: ['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 1)'], // x轴颜色
       yColors: 'match', // y轴颜色 match:应用于x轴相同的
       cellSize: Math.ceil(window.innerWidth / 15), // 网格大小
-      variance:0.9 // 三角形的数量 0 ~ 1
+      variance:0.5, // 方差 偏移量
+      strokeWidth:1,
+      fill: true
     })
-    var svg = pattern.toSVG()
-    svg.id = 'trianglify-overlay'
-    document.body.appendChild(svg)
+    var png = pattern.toCanvas()
+    png.id = 'trianglify-overlay'
+    document.body.appendChild(png)
   </script>
 </body>
 
