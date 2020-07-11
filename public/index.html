@@ -2,7 +2,7 @@
  * @Author: 黄宇/hyuishine
  * @Date: 2020-07-11 09:46:13
  * @LastEditors: 黄宇/hyuishine
- * @LastEditTime: 2020-07-11 11:04:10
+ * @LastEditTime: 2020-07-11 22:16:30
  * @Description: 
  * @Email: hyuishine@gmail.com
  * @Company: 3xData
@@ -19,7 +19,103 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
+
+  <style>
+    html,
+    body {
+      margin: 0 0;
+      padding: 0 0;
+    }
+
+    #gradient-rotate {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #trianglify-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #color-stop-1 {
+      -webkit-animation: change-color-1 12s ease-in-out infinite alternate;
+      animation: change-color-1 12s ease-in-out infinite alternate
+    }
+
+    #color-stop-2 {
+      -webkit-animation: change-color-2 12s ease-in-out infinite alternate;
+      animation: change-color-2 12s ease-in-out infinite alternate
+    }
+
+    #color-stop-3 {
+      -webkit-animation: change-color-3 12s ease-in-out infinite alternate;
+      animation: change-color-3 12s ease-in-out infinite alternate
+    }
+
+    @keyframes change-color-1 {
+      0% {
+        stop-color: #22C8F6
+      }
+
+      25% {
+        stop-color: #ff0
+      }
+
+      50% {
+        stop-color: #00ffcb
+      }
+
+      75% {
+        stop-color: #70ff00
+      }
+    }
+
+    @keyframes change-color-2 {
+      0% {
+        stop-color: #20C498
+      }
+
+      25% {
+        stop-color: #ff00ad
+      }
+
+      350% {
+        stop-color: #d480ff
+      }
+
+      75% {
+        stop-color: #ff9200
+      }
+    }
+
+    @keyframes change-color-3 {
+      0% {
+        stop-color: #189932
+      }
+
+      25% {
+        stop-color: #c300cb
+      }
+
+      50% {
+        stop-color: #5600d4
+      }
+
+      75% {
+        stop-color: #ff46dc
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -27,7 +123,33 @@
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
       Please enable it to continue.</strong>
   </noscript>
+  <svg id="gradient-rotate" preserveAspectRatio="none" viewBox="0 0 500 500">
+    <defs>
+      <linearGradient x1="0%" y1="0%" y2="100%" id="a">
+        <stop id="color-stop-1" stop-color="#22C8F6" offset="0%"></stop>
+        <stop id="color-stop-2" stop-color="#20C498" offset="65%"></stop>
+        <stop id="color-stop-3" stop-color="#189932" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+    <path fill="url(#a)" d="M0 0h500v500H0z"></path>
+  </svg>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+  <script src='https://unpkg.com/trianglify@^4/dist/trianglify.bundle.js'></script>
+  <script>
+    // set up the base pattern
+    const pattern = trianglify({
+      height: window.innerHeight,// 高度
+      width: window.innerWidth,// 宽度
+      xColors: ['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 1)'], // x轴颜色
+      yColors: 'match', // y轴颜色 match:应用于x轴相同的
+      cellSize: Math.ceil(window.innerWidth / 15), // 网格大小
+      variance:0.9 // 三角形的数量 0 ~ 1
+    })
+    var svg = pattern.toSVG()
+    svg.id = 'trianglify-overlay'
+    document.body.appendChild(svg)
+  </script>
 </body>
+
 </html>

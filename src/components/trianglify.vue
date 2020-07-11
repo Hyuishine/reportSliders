@@ -2,7 +2,7 @@
  * @Author: 黄宇/hyuishine
  * @Date: 2020-07-11 11:05:01
  * @LastEditors: 黄宇/hyuishine
- * @LastEditTime: 2020-07-11 17:38:56
+ * @LastEditTime: 2020-07-11 18:35:10
  * @Description: 
  * @Email: hyuishine@gmail.com
  * @Company: 3xData
@@ -10,7 +10,11 @@
 --> 
 <template>
   <div class="sectionContainer">
-    <v-content></v-content>
+    <v-content>
+        <v-card>
+            123
+        </v-card>
+    </v-content>
     <div class="canvasBack"></div>
   </div>
 </template>
@@ -28,7 +32,7 @@ export default {
     }
   },
   created () {
+      
   }
-
 }
 </script>
