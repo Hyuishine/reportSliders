@@ -2,7 +2,7 @@
  * @Author: 黄宇/hyuishine
  * @Date: 2020-07-11 09:46:13
  * @LastEditors: 黄宇/hyuishine
- * @LastEditTime: 2020-07-12 00:21:25
+ * @LastEditTime: 2020-07-12 16:00:03
  * @Description: 
  * @Email: hyuishine@gmail.com
  * @Company: 3xData
@@ -19,7 +19,7 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
-
+  <link rel="stylesheet" href="https:// cdn.bootcss.com/fullPage.js/2.9.4/jquery.fullpage.min.css" />
   <style>
     html,
     body {
@@ -46,6 +46,7 @@
       width: 100vw;
       height: 100vh;
     }
+
     /* 动态颜色渐变 分阶段 */
     #color-stop-1 {
       -webkit-animation: change-color-1 12s ease-in-out infinite alternate;
@@ -137,6 +138,9 @@
   <!-- built files will be auto injected -->
   <!-- 引入trianglify 直接在body创建多三角背景图 -->
   <script src='./trianglify.bundle.js'></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.js"></script>
+  <script src="https://cdn.bootcss.com/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
   <script>
     // set up the base pattern
     const pattern = trianglify({
@@ -145,8 +149,8 @@
       xColors: ['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 1)'], // x轴颜色
       yColors: 'match', // y轴颜色 match:应用于x轴相同的
       cellSize: Math.ceil(window.innerWidth / 15), // 网格大小
-      variance:0.5, // 方差 偏移量
-      strokeWidth:1,
+      variance: 0.5, // 方差 偏移量
+      strokeWidth: 1,
       fill: true
     })
     var png = pattern.toCanvas()

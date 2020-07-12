@@ -2,7 +2,7 @@
  * @Author: 黄宇/hyuishine
  * @Date: 2020-07-11 09:46:13
  * @LastEditors: 黄宇/hyuishine
- * @LastEditTime: 2020-07-12 15:40:12
+ * @LastEditTime: 2020-07-12 16:04:53
  * @Description: 
  * @Email: hyuishine@gmail.com
  * @Company: 3xData
@@ -44,6 +44,8 @@ export default {
       slideTitle: ['首页', '责任', '已完成的工作', '需要改进的地方', '学到的东西', '未来规划'], // 幻灯片标题
       pageData: [], // 页面数据
       options: {
+        css3:false,
+        easing:'easeInOutCubic',
         scrollOverflow: true, // 超出不显示滚动条
         scrollBar: false, // 滚动条
         resize: true, // 自适应
